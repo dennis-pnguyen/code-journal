@@ -9,5 +9,11 @@ let data = {
 
 window.addEventListener('beforeunload', function (event) {
   const dataJSON = JSON.stringify(data);
-  localStorage.setitem('code-journal-local-storage', dataJSON);
+  localStorage.setItem('cj-local-storage', dataJSON);
 });
+
+const previousDataJSON = localStorage.getItem('cj-local-storage');
+
+if (previousDataJSON !== null) {
+  data = JSON.parse(previousDataJSON);
+}
