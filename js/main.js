@@ -1,4 +1,3 @@
-// update photo preview with URL
 const $photoUrl = document.querySelector('#photo-url');
 const $img = document.querySelector('img');
 
