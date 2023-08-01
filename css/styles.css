@@ -32,6 +32,10 @@ label {
   font-family: 'Lucida Grande', sans-serif;
 }
 
+.row {
+  margin-top: 10px;
+}
+
 .notes {
   margin-top: 10px;
 }
@@ -43,6 +47,11 @@ input {
   margin-bottom: 0.5rem;
   flex-direction: row;
   border-radius: 5px;
+  border-color: #562b81;
+}
+
+input:focus {
+  transition-delay: 0.5 sec;
 }
 
 textarea {
@@ -60,4 +69,6 @@ textarea {
   background-color: #562b81;
   border-radius: 5%;
   color: white;
+  height: 30px;
+  width: 60px;
 }
