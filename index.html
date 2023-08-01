@@ -26,7 +26,7 @@
 
     <main class="container">
       <div class="entry form" data-view="entry-form">
-        <form method="post">
+        <form id="entry-form" method="post">
           <div class="row">
             <div class="column-full">
               <h1>New Entry</h1>
@@ -44,13 +44,18 @@
                 <label for="title">Title</label>
               </div>
               <div class="title-text">
-                <input type="text" required />
+                <input type="text" id="title" name="title" required />
               </div>
               <div>
                 <label for="photo-url">Photo URL</label>
               </div>
-              <div class="photo-url">
-                <input type="text" required />
+              <div>
+                <input
+                  class="photo"
+                  name="photo"
+                  type="text"
+                  id="photo-url"
+                  required />
               </div>
             </div>
           </div>
@@ -60,7 +65,7 @@
               <label for="notes">Notes</label>
               <textarea
                 name="notes"
-                id="notes"
+                id="user-notes"
                 cols="30"
                 rows="10"
                 required></textarea>
