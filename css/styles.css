@@ -2,7 +2,7 @@ header {
   width: 100%;
   background-color: #562b81;
   height: auto;
-  font-family: 'Lucida Grande', sans-serif;
+  font-family: 'Proza Libre', sans-serif;
   color: white;
 }
 
@@ -20,7 +20,7 @@ body {
 }
 
 h1 {
-  font-family: 'Lucida Grande', sans-serif;
+  font-family: 'Proza Libre', sans-serif;
 }
 
 img {
@@ -29,7 +29,7 @@ img {
 
 label {
   margin-bottom: 0.5rem;
-  font-family: 'Lucida Grande', sans-serif;
+  font-family: 'Proza Libre', sans-serif;
 }
 
 .row {
