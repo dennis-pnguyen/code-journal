@@ -69,10 +69,10 @@ document.addEventListener('DOMContentLoaded', function (event) {
 function toggleNoEntries() {
   const $noEntries = document.getElementById('no-entry');
 
-  if (data.entries === 0) {
-    $noEntries.style.display = 'flex';
+  if (data.entries.length <= 0) {
+    $noEntries.classList.remove('hidden');
   } else {
-    $noEntries.style.display = 'none';
+    $noEntries.classList.add('hidden');
   }
 }
 
@@ -91,4 +91,8 @@ function viewSwap(entry) {
   }
 }
 
-viewSwap('entry-form');
+const $anchor = document.querySelector('#entries');
+
+$anchor.addEventListener('click', function () {
+  viewSwap('entries');
+});
