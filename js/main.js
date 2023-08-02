@@ -59,9 +59,9 @@ function renderEntry(entry) {
 }
 
 document.addEventListener('DOMContentLoaded', function (event) {
-  const $uList = document.querySelector('ul');
-
-  for (const entry of data.entries) {
-    $uList.appendChild(renderEntry(entry));
+  const $uList = document.getElementById('entries-list');
+  for (let i = 0; i < data.entries.length; i++) {
+    const $entryDOM = renderEntry(data.entries[i]);
+    $uList.appendChild($entryDOM);
   }
 });
