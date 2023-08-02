@@ -14,7 +14,7 @@
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link
-      href="https://fonts.googleapis.com/css2?family=Proza+Libre&display=swap"
+      href="https://fonts.googleapis.com/css2?family=Open+Sans&family=Proza+Libre&display=swap"
       rel="stylesheet" />
     <link rel="stylesheet" href="css/reset.css" />
     <link rel="stylesheet" href="css/layout.css" />
@@ -24,15 +24,16 @@
     <header>
       <div class="container">
         <div class="row">
-          <div class="column-full header-title">
+          <div class="column-full navbar">
             <h2>Code Journal</h2>
+            <a id="entries">Entries</a>
           </div>
         </div>
       </div>
     </header>
 
     <main class="container">
-      <div class="entry form" data-view="entry-form">
+      <div class="entry-form" data-view="entry-form">
         <form id="entry-form" method="post">
           <div class="row">
             <div class="column-full">
@@ -89,50 +90,13 @@
         </form>
       </div>
 
-      <div data-view="entries" class="hidden">
-        <ul id="entries-list">
-          <li class="new-list-item">
-            <div class="row">
-              <div class="column-half">
-                <img
-                  src="https://images.unsplash.com/photo-1497034825429-c343d7c6a68f?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8Mnx8cmFuZG9tJTIwcGhvdG98ZW58MHx8MHx8fDA%3D&auto=format&fit=crop&w=500&q=60"
-                  alt="ice-cream" />
-              </div>
-              <div class="column-half">
-                <h3>A new image</h3>
-                <p>Ice cream</p>
-              </div>
-            </div>
-          </li>
-
-          <li>
-            <div class="row">
-              <div class="column-half">
-                <img
-                  src="https://images.unsplash.com/photo-1485550409059-9afb054cada4?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8OHx8cmFuZG9tJTIwcGhvdG98ZW58MHx8MHx8fDA%3D&auto=format&fit=crop&w=500&q=60"
-                  alt="lego-heads" />
-              </div>
-              <div class="column-half">
-                <h3>A newer image</h3>
-                <p>Lego heads</p>
-              </div>
-            </div>
-          </li>
-
-          <li>
-            <div class="row">
-              <div class="column-half">
-                <img
-                  src="https://images.unsplash.com/photo-1503249023995-51b0f3778ccf?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MTJ8fHJhbmRvbSUyMHBob3RvfGVufDB8fDB8fHww&auto=format&fit=crop&w=500&q=60"
-                  alt="smoke-guy" />
-              </div>
-              <div class="column-half">
-                <h3>A newest image</h3>
-                <p>Smoke guy</p>
-              </div>
-            </div>
-          </li>
-        </ul>
+      <div data-view="entries" class="entries hidden">
+        <div class="row">
+          <div class="column-full">
+            <p id="no-entry">No entries have been recorded.</p>
+          </div>
+        </div>
+        <ul id="entries-list"></ul>
       </div>
     </main>
     <script src="js/data.js"></script>
