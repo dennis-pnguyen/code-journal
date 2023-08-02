@@ -65,3 +65,30 @@ document.addEventListener('DOMContentLoaded', function (event) {
     $uList.appendChild($entryDOM);
   }
 });
+
+function toggleNoEntries() {
+  const $noEntries = document.getElementById('no-entry');
+
+  if (data.entries === 0) {
+    $noEntries.style.display = 'flex';
+  } else {
+    $noEntries.style.display = 'none';
+  }
+}
+
+toggleNoEntries();
+
+const $entryFormView = document.querySelector('.entry-form');
+const $entriesView = document.querySelector('.entries');
+
+function viewSwap(entry) {
+  if (entry === 'entries') {
+    $entryFormView.classList.add('hidden');
+    $entriesView.classList.remove('hidden');
+  } else {
+    $entriesView.classList.add('hidden');
+    $entryFormView.classList.remove('hidden');
+  }
+}
+
+viewSwap('entry-form');
