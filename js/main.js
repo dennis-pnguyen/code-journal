@@ -7,6 +7,8 @@ function handleInput(event) {
   $img.setAttribute('src', event.target.value);
 }
 
+// Submit and event listener
+
 const $entryForm = document.querySelector('#entry-form');
 
 $entryForm.addEventListener('submit', function (event) {
@@ -22,7 +24,13 @@ $entryForm.addEventListener('submit', function (event) {
   data.entries.unshift(newEntry);
   $img.setAttribute('src', 'images/placeholder-image-square.jpg');
   $entryForm.reset();
+
+  renderEntry(newEntry);
+  viewSwap('entries');
+  toggleNoEntries();
 });
+
+// Render Entry Function
 
 function renderEntry(entry) {
   const $newListItem = document.createElement('li');
@@ -64,7 +72,11 @@ document.addEventListener('DOMContentLoaded', function (event) {
     const $entryDOM = renderEntry(data.entries[i]);
     $uList.appendChild($entryDOM);
   }
+
+  viewSwap();
+  toggleNoEntries();
 });
+
 const $noEntries = document.getElementById('no-entry');
 
 function toggleNoEntries() {
@@ -74,8 +86,6 @@ function toggleNoEntries() {
     $noEntries.classList.add('hidden');
   }
 }
-
-toggleNoEntries();
 
 const $entryFormView = document.querySelector('.entry-form');
 const $entriesView = document.querySelector('.entries');
