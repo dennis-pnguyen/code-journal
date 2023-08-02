@@ -92,3 +92,18 @@ ul {
 #entries {
   margin-left: 1.5rem;
 }
+
+.entries-list {
+  display: flex;
+  flex-wrap: nowrap;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.new-btn {
+  background-color: #562b81;
+  color: white;
+  height: 30px;
+  width: 60px;
+  border-radius: 5px;
+}
