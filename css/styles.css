@@ -6,11 +6,16 @@ header {
   color: white;
 }
 
+.navbar {
+  display: flex;
+  flex-wrap: nowrap;
+  align-items: center;
+}
+
 .header-title {
   display: flex;
   flex-direction: row;
   width: 100%;
-  text-align: left;
 }
 
 body {
@@ -18,8 +23,19 @@ body {
   margin: 0 auto;
 }
 
-h1 {
+h1,
+h3 {
   font-family: 'Proza Libre', sans-serif;
+}
+
+p {
+  font-family: 'Open Sans', sans-serif;
+}
+
+p#no-entry {
+  font-family: 'Open Sans', sans-serif;
+  display: flex;
+  justify-content: space-around;
 }
 
 img {
@@ -29,10 +45,6 @@ img {
 label {
   margin-bottom: 0.5rem;
   font-family: 'Proza Libre', sans-serif;
-}
-
-.row {
-  margin-top: 5px;
 }
 
 .notes {
@@ -75,4 +87,8 @@ textarea:focus {
 
 ul {
   list-style-type: none;
+}
+
+#entries {
+  margin-left: 1.5rem;
 }
