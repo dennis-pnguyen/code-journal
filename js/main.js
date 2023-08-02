@@ -65,10 +65,9 @@ document.addEventListener('DOMContentLoaded', function (event) {
     $uList.appendChild($entryDOM);
   }
 });
+const $noEntries = document.getElementById('no-entry');
 
 function toggleNoEntries() {
-  const $noEntries = document.getElementById('no-entry');
-
   if (data.entries.length <= 0) {
     $noEntries.classList.remove('hidden');
   } else {
@@ -95,4 +94,10 @@ const $anchor = document.querySelector('#entries');
 
 $anchor.addEventListener('click', function () {
   viewSwap('entries');
+});
+
+const $newBtn = document.querySelector('#new-btn');
+
+$newBtn.addEventListener('click', function () {
+  viewSwap('entry-form');
 });
