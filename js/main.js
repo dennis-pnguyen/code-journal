@@ -35,31 +35,33 @@ function renderEntry(entry) {
   $entryNew.setAttribute('class', 'column-half');
 
   const $imgNew = document.createElement('img');
-  $imgNew.setAttribute('src', data.entries.photoUrl);
+  $imgNew.setAttribute('src', entry.photoUrl);
 
   const $newText = document.createElement('div');
   $newText.setAttribute('class', 'column-half');
 
   const $newTitle = document.createElement('h3');
-  $newTitle.textContent = data.entries.title;
+  $newTitle.textContent = entry.title;
 
   const $newNote = document.createElement('p');
-  $newNote.textContent = data.entries.note;
+  $newNote.textContent = entry.note;
 
   $newListItem.appendChild($newRow);
+
   $newRow.appendChild($entryNew);
-
   $entryNew.appendChild($imgNew);
-  $entryNew.appendChild($newText);
 
+  $newRow.appendChild($newText);
   $newText.appendChild($newTitle);
   $newText.appendChild($newNote);
 
-  return $entryNew;
+  return $newListItem;
 }
 
-const $uList = document.querySelector('ul');
+document.addEventListener('DOMContentLoaded', function (event) {
+  const $uList = document.querySelector('ul');
 
-for (const entry of data.entries) {
-  $uList.appendChild(renderEntry(entry));
-}
+  for (const entry of data.entries) {
+    $uList.appendChild(renderEntry(entry));
+  }
+});
