@@ -117,10 +117,23 @@ $anchor.addEventListener('click', function () {
 
 const $newBtn = document.querySelector('#new-btn');
 
+const $heading = document.querySelector('#edit-entry');
+
 $newBtn.addEventListener('click', function () {
   viewSwap('entry-form');
 });
 
 $ul.addEventListener('click', function (event) {
-  viewSwap('entry-form');
+  if (event.target.matches('i')) {
+    viewSwap('entry-Form');
+    $heading.textContent = 'Edit Entry';
+  }
+  const $closestLi = event.target.closest('li');
+  const $dataEntryId = $closestLi.getAttribute('data-entry-id');
+
+  for (let i = 0; i < data.entries.length; i++) {
+    if (data.entries[i].entryId === Number($dataEntryId)) {
+      data.editing = data.entries[i];
+    }
+  }
 });
