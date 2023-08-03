@@ -38,6 +38,7 @@ $entryForm.addEventListener('submit', function (event) {
 function renderEntry(entry) {
   const $newListItem = document.createElement('li');
   $newListItem.setAttribute('class', 'new-list-item');
+  $newListItem.setAttribute('data-entry-id', entry.entryId);
 
   const $newRow = document.createElement('div');
   $newRow.setAttribute('class', 'row');
@@ -55,6 +56,10 @@ function renderEntry(entry) {
   const $newTitle = document.createElement('h3');
   $newTitle.textContent = entry.title;
 
+  const $iFApencil = document.createElement('i');
+  $iFApencil.setAttribute('class', 'fa-solid fa-pencil');
+  $iFApencil.setAttribute('id', 'edit-entry');
+
   const $newNote = document.createElement('p');
   $newNote.textContent = entry.note;
 
@@ -65,6 +70,7 @@ function renderEntry(entry) {
 
   $newRow.appendChild($newText);
   $newText.appendChild($newTitle);
+  $newTitle.appendChild($iFApencil);
   $newText.appendChild($newNote);
 
   return $newListItem;
@@ -112,5 +118,9 @@ $anchor.addEventListener('click', function () {
 const $newBtn = document.querySelector('#new-btn');
 
 $newBtn.addEventListener('click', function () {
+  viewSwap('entry-form');
+});
+
+$ul.addEventListener('click', function (event) {
   viewSwap('entry-form');
 });
