@@ -10,6 +10,7 @@ function handleInput(event) {
 // Submit and event listener
 
 const $entryForm = document.querySelector('#entry-form');
+const $ul = document.querySelector('#entries-list');
 
 $entryForm.addEventListener('submit', function (event) {
   event.preventDefault();
@@ -20,14 +21,16 @@ $entryForm.addEventListener('submit', function (event) {
     photoUrl: $entryForm.photo.value,
     note: $entryForm.notes.value,
   };
+
+  $ul.prepend(renderEntry(newEntry));
+
+  viewSwap('entries');
+  toggleNoEntries();
+
   data.nextEntryId++;
   data.entries.unshift(newEntry);
   $img.setAttribute('src', 'images/placeholder-image-square.jpg');
   $entryForm.reset();
-
-  renderEntry(newEntry);
-  viewSwap('entries');
-  toggleNoEntries();
 });
 
 // Render Entry Function
