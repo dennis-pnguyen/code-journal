@@ -123,17 +123,25 @@ $newBtn.addEventListener('click', function () {
   viewSwap('entry-form');
 });
 
+const $title = document.querySelector('#title');
+const $notes = document.querySelector('#user-notes');
+
 $ul.addEventListener('click', function (event) {
-  if (event.target.matches('i')) {
-    viewSwap('entry-Form');
-    $heading.textContent = 'Edit Entry';
-  }
   const $closestLi = event.target.closest('li');
   const $dataEntryId = $closestLi.getAttribute('data-entry-id');
 
-  for (let i = 0; i < data.entries.length; i++) {
-    if (data.entries[i].entryId === Number($dataEntryId)) {
-      data.editing = data.entries[i];
+  if (event.target.matches('i')) {
+    viewSwap('entry-Form');
+    $heading.textContent = 'Edit Entry';
+
+    for (let i = 0; i < data.entries.length; i++) {
+      if (data.entries[i].entryId === Number($dataEntryId)) {
+        data.editing = data.entries[i];
+      }
     }
+    $title.setAttribute('value', data.editing.title);
+    $photoUrl.setAttribute('value', data.editing.photoUrl);
+    $img.setAttribute('src', data.editing.photoUrl);
+    $notes.value = data.editing.note;
   }
 });
