@@ -47,6 +47,7 @@ function renderEntry(entry) {
 
   const $imgNew = document.createElement('img');
   $imgNew.setAttribute('src', entry.photoUrl);
+  $imgNew.setAttribute('alt', entry.title);
 
   const $newText = document.createElement('div');
   $newText.setAttribute('class', 'column-half');
@@ -70,10 +71,9 @@ function renderEntry(entry) {
 }
 
 document.addEventListener('DOMContentLoaded', function (event) {
-  const $uList = document.getElementById('entries-list');
   for (let i = 0; i < data.entries.length; i++) {
     const $entryDOM = renderEntry(data.entries[i]);
-    $uList.appendChild($entryDOM);
+    $ul.appendChild($entryDOM);
   }
 
   viewSwap();
