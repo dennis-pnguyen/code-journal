@@ -6,20 +6,35 @@ header {
   color: white;
 }
 
+.navbar {
+  display: flex;
+  flex-wrap: nowrap;
+  align-items: center;
+}
+
 .header-title {
   display: flex;
   flex-direction: row;
   width: 100%;
-  text-align: left;
 }
 
 body {
   background-color: #f0f0f0;
-  margin: 0 auto;
 }
 
-h1 {
+h1,
+h3 {
   font-family: 'Proza Libre', sans-serif;
+}
+
+p {
+  font-family: 'Open Sans', sans-serif;
+}
+
+p#no-entry {
+  font-family: 'Open Sans', sans-serif;
+  display: flex;
+  justify-content: space-around;
 }
 
 img {
@@ -29,10 +44,6 @@ img {
 label {
   margin-bottom: 0.5rem;
   font-family: 'Proza Libre', sans-serif;
-}
-
-.row {
-  margin-top: 10px;
 }
 
 .notes {
@@ -71,4 +82,31 @@ textarea:focus {
   color: white;
   height: 30px;
   width: 60px;
+}
+
+ul {
+  list-style-type: none;
+}
+
+ul#entries-list {
+  padding-left: 0;
+}
+
+#entries {
+  margin-left: 1.5rem;
+}
+
+.entries-list {
+  display: flex;
+  flex-wrap: nowrap;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.new-btn {
+  background-color: #562b81;
+  color: white;
+  height: 30px;
+  width: 60px;
+  border-radius: 5px;
 }
