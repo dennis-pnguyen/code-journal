@@ -37,6 +37,21 @@ p#no-entry {
   justify-content: space-around;
 }
 
+a {
+  color: white;
+  text-decoration: none;
+}
+
+i {
+  display: flex;
+  justify-content: space-evenly;
+}
+
+h3 {
+  display: flex;
+  justify-content: space-between;
+}
+
 img {
   width: 100%;
 }
