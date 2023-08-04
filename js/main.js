@@ -31,6 +31,10 @@ $entryForm.addEventListener('submit', function (event) {
   data.entries.unshift(newEntry);
   $img.setAttribute('src', 'images/placeholder-image-square.jpg');
   $entryForm.reset();
+
+  // if (data.editing !== null){
+  //   data.editing.entryId =
+  // }
 });
 
 // Render Entry Function
