@@ -22,19 +22,30 @@ $entryForm.addEventListener('submit', function (event) {
     note: $entryForm.notes.value,
   };
 
-  $ul.prepend(renderEntry(newEntry));
+  if (data.editing === null) {
+    newEntry.entryId = data.nextEntryId;
+    data.nextEntryId++;
+    data.entries.unshift(newEntry);
+    $img.setAttribute('src', 'images/placeholder-image-square.jpg');
+    $ul.prepend(renderEntry(newEntry));
+
+    if (data.editing !== null) {
+      toggleNoEntries();
+    }
+  } else {
+    newEntry.entryId = data.editing.entryId;
+    data.entries[data.entries.length - newEntry.entryId] = newEntry;
+
+    // const $oldLi = document.querySelector("li"); loop through all LI elemetns and select the one you want.
+
+    // const newLi = renderEntry(newEntry);
+    // $oldLi.replaceWith(newLi);
+    // $heading.textContent = 'New Entry';
+    // data.editing = null;
+  }
 
   viewSwap('entries');
-  toggleNoEntries();
-
-  data.nextEntryId++;
-  data.entries.unshift(newEntry);
-  $img.setAttribute('src', 'images/placeholder-image-square.jpg');
   $entryForm.reset();
-
-  // if (data.editing !== null){
-  //   data.editing.entryId =
-  // }
 });
 
 // Render Entry Function
