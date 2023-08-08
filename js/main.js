@@ -28,6 +28,7 @@ $entryForm.addEventListener('submit', function (event) {
     data.entries.unshift(newEntry);
     $img.setAttribute('src', 'images/placeholder-image-square.jpg');
     $ul.prepend(renderEntry(newEntry));
+    $entryForm.reset();
 
     if (data.editing !== null) {
       toggleNoEntries();
@@ -36,16 +37,18 @@ $entryForm.addEventListener('submit', function (event) {
     newEntry.entryId = data.editing.entryId;
     data.entries[data.entries.length - newEntry.entryId] = newEntry;
 
-    // const $oldLi = document.querySelector("li"); loop through all LI elemetns and select the one you want.
+    const $li = document.querySelectorAll('li');
 
-    // const newLi = renderEntry(newEntry);
-    // $oldLi.replaceWith(newLi);
-    // $heading.textContent = 'New Entry';
-    // data.editing = null;
+    for (let i = 0; i < data.entries.length; i++) {
+      if (data.editing.entryId === data.entries[i].entryId) {
+        $li[i].replaceWith(renderEntry(data.entries[i]));
+      }
+      $heading.textContent = 'New Entry';
+      data.editing = null;
+      viewSwap('entries');
+      $entryForm.reset();
+    }
   }
-
-  viewSwap('entries');
-  $entryForm.reset();
 });
 
 // Render Entry Function
@@ -131,11 +134,11 @@ $anchor.addEventListener('click', function () {
 });
 
 const $newBtn = document.querySelector('#new-btn');
-
 const $heading = document.querySelector('#edit-entry');
 
 $newBtn.addEventListener('click', function () {
   viewSwap('entry-form');
+  $entryForm.reset();
 });
 
 const $title = document.querySelector('#title');
