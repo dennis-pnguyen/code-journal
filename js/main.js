@@ -11,6 +11,7 @@ function handleInput(event) {
 
 const $entryForm = document.querySelector('#entry-form');
 const $ul = document.querySelector('#entries-list');
+const $li = document.querySelectorAll('li');
 
 $entryForm.addEventListener('submit', function (event) {
   event.preventDefault();
@@ -28,26 +29,25 @@ $entryForm.addEventListener('submit', function (event) {
     data.entries.unshift(newEntry);
     $img.setAttribute('src', 'images/placeholder-image-square.jpg');
     $ul.prepend(renderEntry(newEntry));
-    $entryForm.reset();
 
     if (data.editing !== null) {
       toggleNoEntries();
     }
   } else {
     newEntry.entryId = data.editing.entryId;
-    data.entries[data.entries.length - newEntry.entryId] = newEntry;
 
-    const $li = document.querySelectorAll('li');
-
-    for (let i = 0; i < data.entries.length; i++) {
-      if (data.editing.entryId === data.entries[i].entryId) {
-        $li[i].replaceWith(renderEntry(data.entries[i]));
+    for (let i = 0; i < $li.length; i++) {
+      if (data.entries[i].entryId === data.editing.entryId) {
+        data.entries[i].title = event.target.title.value;
+        data.entries[i].photoUrl = event.target.photoUrl.value;
+        data.entries[i].notes = event.target.note.value;
+        $li[i].replaceWith(renderEntry(newEntry));
       }
-      $heading.textContent = 'New Entry';
-      data.editing = null;
-      viewSwap('entries');
-      $entryForm.reset();
     }
+    $heading.textContent = 'New Entry';
+    data.editing = null;
+    viewSwap('entries');
+    $entryForm.reset();
   }
 });
 
@@ -148,18 +148,19 @@ $ul.addEventListener('click', function (event) {
   const $closestLi = event.target.closest('li');
   const $dataEntryId = $closestLi.getAttribute('data-entry-id');
 
-  if (event.target.matches('i')) {
-    viewSwap('entry-Form');
-    $heading.textContent = 'Edit Entry';
-
-    for (let i = 0; i < data.entries.length; i++) {
-      if (data.entries[i].entryId === Number($dataEntryId)) {
-        data.editing = data.entries[i];
-      }
+  for (let i = 0; i < data.entries.length; i++) {
+    if (data.entries[i].entryId === Number($dataEntryId)) {
+      data.editing = data.entries[i];
+      break;
     }
-    $title.setAttribute('value', data.editing.title);
-    $photoUrl.setAttribute('value', data.editing.photoUrl);
-    $img.setAttribute('src', data.editing.photoUrl);
-    $notes.value = data.editing.note;
+  }
+  $title.setAttribute('value', data.editing.title);
+  $photoUrl.setAttribute('value', data.editing.photoUrl);
+  $img.setAttribute('src', data.editing.photoUrl);
+  $notes.value = data.editing.note;
+
+  if (event.target.matches('i')) {
+    viewSwap('entry-form');
+    $heading.textContent = 'Edit Entry';
   }
 });
