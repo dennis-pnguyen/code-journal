@@ -38,9 +38,7 @@ $entryForm.addEventListener('submit', function (event) {
 
     for (let i = 0; i < $li.length; i++) {
       if (data.entries[i].entryId === data.editing.entryId) {
-        data.entries[i].title = event.target.title.value;
-        data.entries[i].photoUrl = event.target.photoUrl.value;
-        data.entries[i].notes = event.target.note.value;
+        data.entries[i] = newEntry;
         $li[i].replaceWith(renderEntry(newEntry));
       }
     }
