@@ -49,7 +49,25 @@ $entryForm.addEventListener('submit', function (event) {
   }
 });
 
-// Render Entry Function
+function deleteEntry(e) {
+  for (let i = 0; i < data.entries.length; i++) {
+    if (data.entries[i] === data.editing) {
+      data.entries.splice(i, 1);
+    }
+  }
+  for (let j = 0; j < $li.length; j++) {
+    if (Number($li[j].getAttribute('data-entry-id')) === data.editing.entryId) {
+      $li[j].remove();
+    }
+  }
+  if (data.entries.length === 0) {
+    toggleNoEntries();
+    data.nextEntryId = 1;
+  }
+  data.editing = null;
+  hideModal();
+  viewSwap('entries');
+}
 
 function renderEntry(entry) {
   const $newListItem = document.createElement('li');
@@ -102,7 +120,7 @@ document.addEventListener('DOMContentLoaded', function (event) {
   toggleNoEntries();
 });
 
-const $noEntries = document.getElementById('no-entry');
+const $noEntries = document.querySelector('#no-entry');
 
 function toggleNoEntries() {
   if (data.entries.length <= 0) {
@@ -141,6 +159,7 @@ $newBtn.addEventListener('click', function () {
 
 const $title = document.querySelector('#title');
 const $notes = document.querySelector('#user-notes');
+const $deleteBtn = document.querySelector('.delete-btn');
 
 $ul.addEventListener('click', function (event) {
   const $closestLi = event.target.closest('li');
@@ -160,5 +179,25 @@ $ul.addEventListener('click', function (event) {
   if (event.target.matches('i')) {
     viewSwap('entry-form');
     $heading.textContent = 'Edit Entry';
+    $deleteBtn.className = 'delete-btn show';
   }
 });
+
+const $overlay = document.querySelector('.overlay');
+const $modal = document.querySelector('.modal');
+const $cancelBtn = document.querySelector('.cancel-btn');
+const $confirmBtn = document.querySelector('.confirm-btn');
+
+$cancelBtn.addEventListener('click', hideModal);
+$deleteBtn.addEventListener('click', showModal);
+$confirmBtn.addEventListener('click', deleteEntry);
+
+function hideModal(e) {
+  $overlay.className = 'overlay hidden';
+  $modal.className = 'modal hidden';
+}
+
+function showModal(e) {
+  $overlay.className = 'overlay show';
+  $modal.className = 'modal show';
+}
