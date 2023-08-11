@@ -29,6 +29,7 @@ $entryForm.addEventListener('submit', function (event) {
     data.entries.unshift(newEntry);
     $img.setAttribute('src', 'images/placeholder-image-square.jpg');
     $ul.prepend(renderEntry(newEntry));
+    viewSwap('entries');
 
     if (data.editing !== null) {
       toggleNoEntries();
@@ -100,7 +101,7 @@ document.addEventListener('DOMContentLoaded', function (event) {
   toggleNoEntries();
 });
 
-const $noEntries = document.querySelector('#no-entry');
+const $noEntries = document.querySelector('.no-entry');
 
 function toggleNoEntries() {
   if (data.entries.length <= 0) {
@@ -127,13 +128,15 @@ const $anchor = document.querySelector('#entries');
 
 $anchor.addEventListener('click', function () {
   viewSwap('entries');
+  document.getElementById('entry-form').reset();
 });
 
-const $newBtn = document.querySelector('#new-btn');
+const $newBtn = document.querySelector('.new-btn');
 const $heading = document.querySelector('#edit-entry');
 
 $newBtn.addEventListener('click', function () {
   viewSwap('entry-form');
+  $heading.textContent = 'New Entry';
   $entryForm.reset();
 });
 
@@ -151,27 +154,29 @@ $ul.addEventListener('click', function (event) {
       break;
     }
   }
-  $title.setAttribute('value', data.editing.title);
-  $photoUrl.setAttribute('value', data.editing.photoUrl);
-  $img.setAttribute('src', data.editing.photoUrl);
-  $notes.value = data.editing.note;
-  $deleteBtn.className = 'delete-btn';
 
   if (event.target.matches('i')) {
     viewSwap('entry-form');
     $heading.textContent = 'Edit Entry';
+    $title.setAttribute('value', data.editing.title);
+    $photoUrl.setAttribute('value', data.editing.photoUrl);
+    $img.setAttribute('src', data.editing.photoUrl);
+    $notes.value = data.editing.note;
+    $deleteBtn.className = 'delete-btn';
   }
 });
 
 function deleteEntry(e) {
-  const deleteEntryId = data.editing.entryId;
   for (let i = 0; i < data.entries.length; i++) {
-    if (data.entries[i].entryId === deleteEntryId) {
+    if (data.entries[i] === data.editing) {
       data.entries.splice(i, 1);
       $ul.children[i].remove();
     }
+    if (data.entries.length === 0) {
+      toggleNoEntries();
+      data.nextEntryId = 1;
+    }
   }
-  toggleNoEntries();
   data.editing = null;
   cancelBtn();
   viewSwap('entries');
