@@ -31,7 +31,7 @@ p {
   font-family: 'Open Sans', sans-serif;
 }
 
-p#no-entry {
+.no-entry {
   font-family: 'Open Sans', sans-serif;
   display: flex;
   justify-content: space-around;
@@ -45,6 +45,7 @@ a {
 i {
   display: flex;
   justify-content: space-evenly;
+  cursor: pointer;
 }
 
 h3 {
@@ -169,6 +170,7 @@ textarea:focus {
   font-family: 'Open Sans', sans-serif;
   text-decoration: underline;
   color: red;
+  cursor: pointer;
 }
 
 .submit-btn {
@@ -177,6 +179,7 @@ textarea:focus {
   color: white;
   height: 30px;
   width: 60px;
+  cursor: pointer;
 }
 
 ul {
@@ -204,4 +207,5 @@ ul#entries-list {
   height: 30px;
   width: 60px;
   border-radius: 5px;
+  cursor: pointer;
 }
