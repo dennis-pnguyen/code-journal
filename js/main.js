@@ -49,26 +49,6 @@ $entryForm.addEventListener('submit', function (event) {
   }
 });
 
-function deleteEntry(e) {
-  for (let i = 0; i < data.entries.length; i++) {
-    if (data.entries[i] === data.editing) {
-      data.entries.splice(i, 1);
-    }
-  }
-  for (let j = 0; j < $li.length; j++) {
-    if (Number($li[j].getAttribute('data-entry-id')) === data.editing.entryId) {
-      $li[j].remove();
-    }
-  }
-  if (data.entries.length === 0) {
-    toggleNoEntries();
-    data.nextEntryId = 1;
-  }
-  data.editing = null;
-  hideModal();
-  viewSwap('entries');
-}
-
 function renderEntry(entry) {
   const $newListItem = document.createElement('li');
   $newListItem.setAttribute('class', 'new-list-item');
@@ -175,29 +155,40 @@ $ul.addEventListener('click', function (event) {
   $photoUrl.setAttribute('value', data.editing.photoUrl);
   $img.setAttribute('src', data.editing.photoUrl);
   $notes.value = data.editing.note;
+  $deleteBtn.className = 'delete-btn';
 
   if (event.target.matches('i')) {
     viewSwap('entry-form');
     $heading.textContent = 'Edit Entry';
-    $deleteBtn.className = 'delete-btn show';
   }
 });
 
-const $overlay = document.querySelector('.overlay');
-const $modal = document.querySelector('.modal');
+function deleteEntry(e) {
+  const deleteEntryId = data.editing.entryId;
+  for (let i = 0; i < data.entries.length; i++) {
+    if (data.entries[i].entryId === deleteEntryId) {
+      data.entries.splice(i, 1);
+      $ul.children[i].remove();
+    }
+  }
+  toggleNoEntries();
+  data.editing = null;
+  cancelBtn();
+  viewSwap('entries');
+}
+
+const $modal = document.querySelector('.modal-container');
 const $cancelBtn = document.querySelector('.cancel-btn');
 const $confirmBtn = document.querySelector('.confirm-btn');
 
-$cancelBtn.addEventListener('click', hideModal);
-$deleteBtn.addEventListener('click', showModal);
+$cancelBtn.addEventListener('click', cancelBtn);
+$deleteBtn.addEventListener('click', deleteBtn);
 $confirmBtn.addEventListener('click', deleteEntry);
 
-function hideModal(e) {
-  $overlay.className = 'overlay hidden';
-  $modal.className = 'modal hidden';
+function cancelBtn(e) {
+  $modal.className = 'modal-container hidden';
 }
 
-function showModal(e) {
-  $overlay.className = 'overlay show';
-  $modal.className = 'modal show';
+function deleteBtn(e) {
+  $modal.className = 'modal-container';
 }
