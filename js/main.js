@@ -128,7 +128,6 @@ const $anchor = document.querySelector('#entries');
 
 $anchor.addEventListener('click', function () {
   viewSwap('entries');
-  document.getElementById('entry-form').reset();
 });
 
 const $newBtn = document.querySelector('.new-btn');
@@ -174,7 +173,6 @@ function deleteEntry(e) {
     }
     if (data.entries.length === 0) {
       toggleNoEntries();
-      data.nextEntryId = 1;
     }
   }
   data.editing = null;
