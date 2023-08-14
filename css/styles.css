@@ -31,7 +31,7 @@ p {
   font-family: 'Open Sans', sans-serif;
 }
 
-p#no-entry {
+.no-entry {
   font-family: 'Open Sans', sans-serif;
   display: flex;
   justify-content: space-around;
@@ -45,6 +45,7 @@ a {
 i {
   display: flex;
   justify-content: space-evenly;
+  cursor: pointer;
 }
 
 h3 {
@@ -87,8 +88,89 @@ textarea:focus {
   outline-color: #562b81;
 }
 
-.save-button {
-  text-align: right;
+.overlay {
+  position: fixed;
+  top: 0;
+  bottom: 0;
+  right: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.8);
+  z-index: 3;
+}
+
+.show {
+  display: flex;
+}
+
+.hidden {
+  display: none;
+}
+
+.modal-container {
+  position: fixed;
+  display: flex;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  align-items: center;
+  justify-content: center;
+  background-color: rgba(0, 0, 0, 0.8);
+}
+
+.modal-header {
+  background-color: #fff;
+  border-radius: 5px;
+  text-align: center;
+  width: 30%;
+  border: 1px solid;
+  padding: 20px;
+}
+
+.modal-buttons {
+  display: flex;
+  justify-content: space-between;
+  padding-bottom: 1rem;
+}
+
+.confirm-btn {
+  background-color: red;
+  font-family: 'Open Sans', sans-serif;
+  border-radius: 5%;
+  height: 2rem;
+  width: auto;
+  border: none;
+  color: white;
+  margin-right: 1rem;
+}
+
+.cancel-btn {
+  background-color: lightgray;
+  font-family: 'Open Sans', sans-serif;
+  border-radius: 5%;
+  height: 2rem;
+  width: auto;
+  border: none;
+  margin-left: 1rem;
+}
+
+.del-save-row {
+  display: flex;
+  justify-content: space-between;
+}
+
+.delete-button {
+  display: flex;
+}
+
+.delete-btn {
+  border: none;
+  font-family: 'Open Sans', sans-serif;
+  text-decoration: underline;
+  color: red;
+  cursor: pointer;
 }
 
 .submit-btn {
@@ -97,6 +179,7 @@ textarea:focus {
   color: white;
   height: 30px;
   width: 60px;
+  cursor: pointer;
 }
 
 ul {
@@ -124,4 +207,5 @@ ul#entries-list {
   height: 30px;
   width: 60px;
   border-radius: 5px;
+  cursor: pointer;
 }

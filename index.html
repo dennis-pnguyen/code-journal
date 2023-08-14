@@ -81,13 +81,25 @@
           </div>
 
           <div class="row">
-            <div class="column-full">
+            <div class="column-full del-save-row">
+              <div class="delete-button">
+                <button class="delete-btn hidden">Delete Entry</button>
+              </div>
               <div class="save-button">
                 <button class="submit-btn" type="submit">SAVE</button>
               </div>
             </div>
           </div>
         </form>
+        <div class="modal-container hidden">
+          <div class="modal-header">
+            <p>Are you sure you want to delete the entry?</p>
+            <div class="row modal-buttons">
+              <button class="cancel-btn">CANCEL</button>
+              <button class="confirm-btn">CONFIRM</button>
+            </div>
+          </div>
+        </div>
       </div>
 
       <div data-view="entries" class="entries hidden">
@@ -101,7 +113,7 @@
         </div>
         <div class="row">
           <div class="column-full">
-            <p id="no-entry">No entries have been recorded.</p>
+            <p class="no-entry">No entries have been recorded.</p>
           </div>
         </div>
         <ul id="entries-list"></ul>
